@@ -1,4 +1,4 @@
-import { ListItem } from "./ListItem";
+import  ListItem  from "./ListItem";
 
 interface List {
     list: ListItem[];
@@ -32,7 +32,7 @@ export default class FullList implements List {
         })
     }
     save(): void {
-        localStorage.setItem("current_lsit", JSON.stringify(this._list));
+        localStorage.setItem("myList", JSON.stringify(this._list));
     }
 
     clearList(): void {
@@ -42,8 +42,9 @@ export default class FullList implements List {
     
     addItem(newItem: ListItem): void {
         this._list.push(newItem);
+        this.save();
     }
-
+    
     removeItem(itemId: string): void{
         this._list = this._list.filter(item => item.id !== itemId);
         this.save(); 
